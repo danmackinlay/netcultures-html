@@ -19,10 +19,18 @@
       google.load("jquery", "1.3");
       google.load("jqueryui", "1.7");
       google.setOnLoadCallback(function() {
-        $("p").click(
-          function () { 
-            $(this).hide(1000); 
-          }
+        function process_response(response) {
+          $.each(response.value.items,
+            function (i, item) {
+              $("<a/>").attr("href", item.link)
+                .text(item.title
+                ).append($('<br/>')
+                ).appendTo("#content");
+            }
+          );
+        };
+        $.getJSON( "http://pipes.yahoo.com/pipes/pipe.run?_id=26cec91db73f043d509d4ce4a68cd24c&_render=json&_callback=?",
+          process_response
         );
       });
     </script>
