@@ -18,6 +18,13 @@
     <script>
       google.load("jquery", "1.3");
       google.load("jqueryui", "1.7");
+      google.setOnLoadCallback(function() {
+        $("p").click(
+          function () { 
+            $(this).hide(1000); 
+          }
+        );
+      });
     </script>
   </head>
   <body>
